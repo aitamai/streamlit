@@ -4,7 +4,8 @@ import tiktoken
 import streamlit as st
 
 # Streamlit CloudシークレットからOPENAI_API_KEYを取得
-openai_api_key = st.secrets["OPENAI_API_KEY"]
+openai_api_key = st.secrets["openai"]["OPENAI_API_KEY"]
+
 
 if not openai_api_key:
     st.error("🔑 OPENAI_API_KEY が設定されていません。")
