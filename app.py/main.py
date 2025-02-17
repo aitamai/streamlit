@@ -2,8 +2,9 @@ import streamlit as st
 import os
 import tiktoken
 import streamlit as st
-# GitHub シークレット or Streamlit secrets から API キーを取得
-openai_api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", ""))
+
+# Streamlit CloudシークレットからOPENAI_API_KEYを取得
+openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 if not openai_api_key:
     st.error("🔑 OPENAI_API_KEY が設定されていません。")
