@@ -64,6 +64,12 @@ def init_sidebar():
     elif model == "Gemini 1.5 Pro":
         st.session_state.model_name = "gemini-1.5-pro-latest"
         model_instance = ChatGoogleGenerativeAI(temperature=temperature, model=st.session_state.model_name)
+
+      # セッションステートに保存
+    st.session_state.model_name = model_name
+    st.session_state.temperature = temperature
+    st.session_state.model_instance = model_instance
+
     return model_instance, page  # 必ず page も返す
 
 
@@ -101,15 +107,13 @@ def main():
     )
 
      #サイドバーを初期化（モデル + ページ選択）
-    st.session_state.llm, page = init_sidebar()
+     model_instance, page = init_sidebar()
 
     
-    # ChatOpenAI のインスタンスを作成
-    model_instance = ChatOpenAI(
-        temperature=temperature, 
-        model_name=model_name, 
-        openai_api_key=openai_api_key  # APIキーを渡す
-    )
+     # ChatOpenAI のインスタンスを作成（init_sidebarで作成されているため、再度作成する必要なし）
+    if 'model_instance' not in st.session_state:
+        st.session_state.model_instance = model_instance
+
 
     
       #ページごとの表示処理
