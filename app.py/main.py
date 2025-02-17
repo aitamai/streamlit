@@ -17,13 +17,6 @@ from dotenv import load_dotenv
 # Streamlit CloudシークレットからOPENAI_API_KEYを取得
 openai_api_key = st.secrets["openai"]["OPENAI_API_KEY"]
 
-# ChatOpenAI のインスタンスを作成
-model_instance = ChatOpenAI(
-    temperature=temperature, 
-    model_name=model_name, 
-    openai_api_key=openai_api_key  # APIキーを渡す
-)
-
 if not openai_api_key:
     st.error("🔑 OPENAI_API_KEY が設定されていません。")
 
@@ -109,7 +102,15 @@ def main():
 
      #サイドバーを初期化（モデル + ページ選択）
     st.session_state.llm, page = init_sidebar()
- 
+
+    
+    # ChatOpenAI のインスタンスを作成
+    model_instance = ChatOpenAI(
+        temperature=temperature, 
+        model_name=model_name, 
+        openai_api_key=openai_api_key  # APIキーを渡す
+    )
+
     
       #ページごとの表示処理
     if page == "Home":
