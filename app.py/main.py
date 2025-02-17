@@ -50,20 +50,22 @@ def init_sidebar():
 
     # Temperature スライダー
     temperature = st.sidebar.slider("Temperature:", 0.0, 2.0, 0.0, 0.01)
-  
+
     model_instance = None  # 初期値
+    model_name = None  # 初期値
+
     if model == "GPT-3.5":
         st.session_state.model_name = "gpt-3.5-turbo"
-        model_instance = ChatOpenAI(temperature=temperature, model_name=st.session_state.model_name)
+        model_instance = ChatOpenAI(temperature=temperature, model_name=st.session_state.model_name, openai_api_key=openai_api_key)
     elif model == "GPT-4":
         st.session_state.model_name = "gpt-4o"
-        model_instance = ChatOpenAI(temperature=temperature, model_name=st.session_state.model_name)
+        model_instance = ChatOpenAI(temperature=temperature, model_name=st.session_state.model_name, openai_api_key=openai_api_key)
     elif model == "Claude 3.5 Sonnet":
         st.session_state.model_name = "claude-3-5-sonnet-20240620"
-        model_instance = ChatAnthropic(temperature=temperature, model_name=st.session_state.model_name)
+        model_instance = ChatAnthropic(temperature=temperature, model_name=st.session_state.model_name, openai_api_key=openai_api_key)
     elif model == "Gemini 1.5 Pro":
         st.session_state.model_name = "gemini-1.5-pro-latest"
-        model_instance = ChatGoogleGenerativeAI(temperature=temperature, model=st.session_state.model_name)
+        model_instance = ChatGoogleGenerativeAI(temperature=temperature, model=st.session_state.model_name, openai_api_key=openai_api_key)
 
       # セッションステートに保存
     st.session_state.model_name = model_name
@@ -112,9 +114,11 @@ def main():
     
      # ChatOpenAI のインスタンスを作成（init_sidebarで作成されているため、再度作成する必要なし）
     if 'model_instance' not in st.session_state:
-        st.session_state.model_instance = model_instance
-
-
+        st.error("モデルが選択されていません。")
+    return
+    
+    # `model_instance` を `st.session_state` から取得
+    model_instance = st.session_state.model_instance
     
       #ページごとの表示処理
     if page == "Home":
