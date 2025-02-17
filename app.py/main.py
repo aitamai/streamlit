@@ -3,6 +3,17 @@ import os
 import tiktoken
 import streamlit as st
 
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+#models
+from langchain_anthropic import ChatAnthropic
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+from dotenv import load_dotenv
+
+
 # Streamlit CloudシークレットからOPENAI_API_KEYを取得
 openai_api_key = st.secrets["openai"]["OPENAI_API_KEY"]
 
@@ -15,16 +26,6 @@ model_instance = ChatOpenAI(
 
 if not openai_api_key:
     st.error("🔑 OPENAI_API_KEY が設定されていません。")
-
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
-
-#models
-from langchain_anthropic import ChatAnthropic
-from langchain_google_genai import ChatGoogleGenerativeAI
-
-from dotenv import load_dotenv
 
 MODEL_PRICES = {
     "input": {
