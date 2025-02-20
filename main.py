@@ -7,8 +7,6 @@ import requests
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", ""))
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY", ""))
 
-from dotenv import load_dotenv
-
 # ChatGPT & Groq の APIエンドポイント
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
