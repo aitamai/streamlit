@@ -11,6 +11,7 @@ GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
+st.set_page_config(page_title="Chatbot (GPT-3.5-Turbo & Groq)", page_icon=icon,layout="wide")
 
 # モデルの価格リスト
 MODEL_PRICES = {
@@ -142,9 +143,10 @@ def chat_interface(model_instance, temperature):
         # 画面を更新してチャット履歴を反映
         st.experimental_rerun()
 
+
+                  
 # 🔹 **メイン関数**
 def main():
-    st.set_page_config(page_title="Chatbot (GPT-3.5-Turbo & Groq)", page_icon="🤖")
 
     # サイドバーの初期化
     model_instance, page, temperature = init_sidebar()
@@ -166,6 +168,18 @@ def main():
     st.markdown(
     """
     <style>
+
+    /* ヘッダーとフッターを非表示にする */
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    [data-testid="stToolbar"] {display: none !important;}
+
+    /* サイドバーのデザインを変更 */
+    [data-testid="stSidebar"] {
+        background-color: #1e1e2f !important;
+        color: white !important;
+    }
+
     /* 🌟 全体の背景 */
     body {
         background-color: #f4f7f9; /* 落ち着いたブルーグレー */
