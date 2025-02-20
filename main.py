@@ -141,7 +141,7 @@ def chat_interface(model_instance, temperature):
             ai_response = chat_with_ai(user_input, model_instance, temperature)
 
         # 画面を更新してチャット履歴を反映
-        st.experimental_rerun()
+        st.rerun()  # ここを修正！
 
 
                   
