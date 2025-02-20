@@ -11,7 +11,7 @@ GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
-st.set_page_config(page_title="Chatbot (GPT-3.5-Turbo & Groq)", page_icon=icon,layout="wide")
+st.set_page_config(page_title="Chatbot (GPT-3.5-Turbo & Groq)", page_icon="🤖",layout="wide")
 
 # モデルの価格リスト
 MODEL_PRICES = {
