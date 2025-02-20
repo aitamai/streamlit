@@ -169,25 +169,29 @@ def main():
     """
     <style>
 
-    /* ヘッダーとフッターを非表示にする */
-    header {visibility: hidden;}
-    footer {visibility: hidden;}
-    [data-testid="stToolbar"] {display: none !important;}
-
-    /* サイドバーのデザインを変更 */
-    [data-testid="stSidebar"] {
-        background-color: #1e1e2f !important;
-        color: white !important;
+     /* 🔥 ヘッダー（Streamlit ツールバー）を非表示 */
+    header, [data-testid="stToolbar"], [data-testid="stHeader"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
     }
 
-        /* 📌 スマホ画面でのレイアウト調整 */
+    /* 📝 フッターを非表示 */
+    footer, [data-testid="stFooter"], .st-emotion-cache-1wmy9hl {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
+    }
+
+    /* 📌 スマホ画面でのレイアウト調整 */
     @media (max-width: 768px) {
-        header, footer, [data-testid="stToolbar"] {
+        header, footer, [data-testid="stToolbar"], [data-testid="stHeader"], [data-testid="stFooter"], .st-emotion-cache-1wmy9hl {
             display: none !important;
             visibility: hidden !important;
+            height: 0px !important;
         }
     }
-
+     
     /* 🌟 全体の背景 */
     body {
         background-color: #f4f7f9; /* 落ち着いたブルーグレー */
