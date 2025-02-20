@@ -183,6 +183,13 @@ def main():
         height: 0px !important;
     }
 
+    /* 🔥 「Hosted with Streamlit」 のバナーを完全非表示 */
+    iframe[title="streamlit_footer"], iframe {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
+    }
+
     /* 📌 スマホ画面でのレイアウト調整 */
     @media (max-width: 768px) {
         header, footer, [data-testid="stToolbar"], [data-testid="stHeader"], [data-testid="stFooter"], .st-emotion-cache-1wmy9hl {
