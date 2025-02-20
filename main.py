@@ -65,7 +65,9 @@ def chat_with_ai(user_input, model_instance, temperature):
         return ai_response
 
     except requests.exceptions.RequestException as e:
-        return f"⚠️ APIリクエストエラー: {e}"
+    st.error(f"⚠️ APIリクエストエラー: {e}")  # エラーをStreamlitのUIに表示
+    return f"⚠️ APIリクエストエラー: {e}"
+
 
 # 🔹 **サイドバーの設定**
 def init_sidebar():
