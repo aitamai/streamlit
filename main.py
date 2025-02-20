@@ -4,8 +4,8 @@ import streamlit as st
 import requests
 
 # GitHub シークレット or Streamlit secrets から API キーを取得
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", ""))
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY", ""))
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
 # ChatGPT & Groq の APIエンドポイント
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
@@ -65,8 +65,8 @@ def chat_with_ai(user_input, model_instance, temperature):
         return ai_response
 
     except requests.exceptions.RequestException as e:
-    st.error(f"⚠️ APIリクエストエラー: {e}")  # エラーをStreamlitのUIに表示
-    return f"⚠️ APIリクエストエラー: {e}"
+        st.error(f"⚠️ APIリクエストエラー: {e}")  # エラーをStreamlitのUIに表示
+        return f"⚠️ APIリクエストエラー: {e}"
 
 
 # 🔹 **サイドバーの設定**
