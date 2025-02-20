@@ -180,6 +180,14 @@ def main():
         color: white !important;
     }
 
+        /* 📌 スマホ画面でのレイアウト調整 */
+    @media (max-width: 768px) {
+        header, footer, [data-testid="stToolbar"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    }
+
     /* 🌟 全体の背景 */
     body {
         background-color: #f4f7f9; /* 落ち着いたブルーグレー */
